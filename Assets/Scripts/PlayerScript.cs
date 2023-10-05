@@ -19,9 +19,9 @@ public class PlayerScript : MonoBehaviour
             rigidbody.AddForce(Vector3.up * 10, ForceMode.Impulse);
         }
 
-        if (transform.position.y <= -3)
+        if (transform.position.y <= -4)
         {
-            transform.position = new Vector3(0, -3, 0);
+            transform.position = new Vector3(0, -4, 0);
         }
     }
 
