@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ObstacleManagerScript : MonoBehaviour
 {
+    public GameManager gameManager;
     public GameObject obstaclePrefab;
 
     void Start()
@@ -11,6 +12,15 @@ public class ObstacleManagerScript : MonoBehaviour
 
     void GenerateObstacle()
     {
-        Instantiate(obstaclePrefab, new Vector3(15, Random.Range(-3, 3), 0), Quaternion.identity);
+        var obst = Instantiate(obstaclePrefab, new Vector3(15, Random.Range(-3, 3), 0), Quaternion.identity);
+        obst.GetComponent<FieldObject>().gameManager = gameManager;
+    }
+
+    void Update()
+    {
+        if (gameManager.isGameOver)
+        {
+            CancelInvoke();
+        }
     }
 }

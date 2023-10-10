@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public GameManager gameManager;
     new Rigidbody rigidbody;
     public TMPro.TMP_Text scoreText; 
     int score { get; set; }
@@ -12,14 +13,20 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < 4)
+        if (!gameManager.isGameOver) 
         {
-            rigidbody.AddForce(Vector3.up * 10, ForceMode.Impulse);
-        }
+            if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < 4)
+            {
+                rigidbody.AddForce(Vector3.up * 10, ForceMode.Impulse);
+            }
 
-        if (transform.position.y <= -4)
+            if (transform.position.y <= -4)
+            {
+                transform.position = new Vector3(0, -4, 0);
+            }
+        } else
         {
-            transform.position = new Vector3(0, -4, 0);
+            rigidbody.isKinematic = true;
         }
     }
 
@@ -45,7 +52,7 @@ public class PlayerScript : MonoBehaviour
         ObstacleScript obstacle = other.transform.parent?.GetComponent<ObstacleScript>();
         if (obstacle != null)
         {
-            Debug.Log("ti proigral");
+            gameManager.GameOver();
         }
     }
 
