@@ -1335,6 +1335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 957840028}
+  endingScoreText: {fileID: 241967371}
   restartMenu: {fileID: 1445519725}
 --- !u!1 &1646552084
 GameObject:

@@ -20,9 +20,9 @@ public class PlayerScript : MonoBehaviour
                 rigidbody.AddForce(Vector3.up * 10, ForceMode.Impulse);
             }
 
-            if (transform.position.y <= -4)
+            if (transform.position.y <= -4 || transform.position.y >= 6)
             {
-                transform.position = new Vector3(0, -4, 0);
+                gameManager.GameOver();
             }
         } else
         {

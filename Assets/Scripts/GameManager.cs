@@ -5,11 +5,13 @@ public class GameManager : MonoBehaviour
 {
     public bool isGameOver { get; set; } = false;
     public GameObject scoreText; 
+    public GameObject endingScoreText;
     public GameObject restartMenu;
     public void GameOver()
     {
         isGameOver = true;
         scoreText.SetActive(false);
+        endingScoreText.GetComponent<TMPro.TMP_Text>().text = scoreText.GetComponent<TMPro.TMP_Text>().text;
         restartMenu.SetActive(true);
     }
     public void ReloadGame()
