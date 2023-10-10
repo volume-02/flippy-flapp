@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     new Rigidbody rigidbody;
+    public TMPro.TMP_Text scoreText; 
     int score { get; set; }
     void Start()
     {
@@ -27,6 +28,7 @@ public class PlayerScript : MonoBehaviour
         hitCoin(other);
         hitObstacle(other);
         overflightObstacle(other);
+        scoreText.text = score.ToString();
     }
 
     void hitCoin(Collider other)
@@ -35,7 +37,6 @@ public class PlayerScript : MonoBehaviour
         if (coin != null)
         {
             score += coin.price;
-            Debug.Log(score);
         }
     }
 
@@ -54,7 +55,6 @@ public class PlayerScript : MonoBehaviour
         if (obstacle != null)
         {
             score += obstacle.price;
-            Debug.Log(score);
         }
     }
 }
