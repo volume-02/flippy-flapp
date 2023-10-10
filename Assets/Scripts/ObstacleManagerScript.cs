@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleManagerScript : MonoBehaviour
@@ -9,11 +7,6 @@ public class ObstacleManagerScript : MonoBehaviour
     void Start()
     {
         InvokeRepeating("GenerateObstacle", 0, 2);
-    }
-
-    void Update()
-    {
-
     }
 
     void GenerateObstacle()

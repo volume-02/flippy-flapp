@@ -1,17 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
     new Rigidbody rigidbody;
-    // Start is called before the first frame update
+    int score { get; set; }
     void Start()
     {
         rigidbody = gameObject.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < 4)
@@ -27,6 +24,37 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("ti proigral");
+        hitCoin(other);
+        hitObstacle(other);
+        overflightObstacle(other);
+    }
+
+    void hitCoin(Collider other)
+    {
+        Coin coin = other.GetComponent<Coin>();
+        if (coin != null)
+        {
+            score += coin.price;
+            Debug.Log(score);
+        }
+    }
+
+    void hitObstacle(Collider other)
+    {
+        ObstacleScript obstacle = other.transform.parent?.GetComponent<ObstacleScript>();
+        if (obstacle != null)
+        {
+            Debug.Log("ti proigral");
+        }
+    }
+
+    void overflightObstacle(Collider other)
+    {
+        ObstacleScript obstacle = other.GetComponent<ObstacleScript>();
+        if (obstacle != null)
+        {
+            score += obstacle.price;
+            Debug.Log(score);
+        }
     }
 }
