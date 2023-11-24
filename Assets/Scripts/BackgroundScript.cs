@@ -19,13 +19,13 @@ public class BackgroundScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (!gameManager.isGameOver)
-       // {
+        if (!gameManager.isGameOver)
+        {
             transform.Translate(Vector3.left * 15 * Time.deltaTime);
             if (transform.position.x < startPos.x - repeatWidth)
             {
                 transform.position = new Vector3(75, -5, -5);
             }
-       // }
+        }
     }
 }
